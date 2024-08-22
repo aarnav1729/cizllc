@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
     <style>
+        html {
+            scroll-behavior: smooth;
+            background: linear-gradient(-90deg, #ff71bf, #b294ff, #6bb0ff, #adfbff);
+        }
+
         body {
             font-family: 'IBM Plex Sans', sans-serif;
             background: linear-gradient(-90deg, #ff71bf, #b294ff, #6bb0ff, #adfbff);
@@ -49,16 +54,115 @@
                 background-position: 100% 50%;
             }
         }
+
+        /* Parallax Background */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Custom Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Button Hover Effect */
+        .btn-hover-underline {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-hover-underline:before {
+            content: "";
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: white;
+            bottom: 0;
+            left: -100%;
+            transition: left 0.3s ease;
+        }
+
+        .btn-hover-underline:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-hover-underline:hover:before {
+            left: 0;
+        }
+
+        /* Subtle Text Shadow */
+        .text-shadow {
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Parallax Heading */
+        .parallax-heading {
+            font-size: 4rem;
+            line-height: 1.2;
+            color: #fff;
+            text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-divider {
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            margin: 4rem 0;
+        }
+
+        /* Interactive Hover Effects */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
 <body class="text-gray-900 leading-relaxed">
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white shadow-lg">
-        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <h1 class="text-2xl font-bold text-gray-800">CIZ.LLC</h1>
-            <nav class="hidden md:flex space-x-6">
+    <header class="sticky top-0 z-50 bg-white shadow-xl py-4 transition-shadow duration-500">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <h1 class="text-3xl font-bold text-gray-800 fade-in-up">CIZ.LLC</h1>
+            <nav class="hidden md:flex space-x-8 fade-in">
                 <a href="#consulting" class="text-gray-700 hover:text-blue-500 transition-colors duration-300">Consulting</a>
                 <a href="#landscaping" class="text-gray-700 hover:text-blue-500 transition-colors duration-300">Landscaping</a>
                 <a href="#car-dealership" class="text-gray-700 hover:text-blue-500 transition-colors duration-300">Car Dealership</a>
@@ -85,69 +189,74 @@
         </div>
     </header>
 
+    <!-- Hero Section with Parallax Background -->
+    <section id="hero" class="parallax-bg h-screen bg-cover bg-center relative" style="background-image: url('./samp.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <h1 class="parallax-heading text-center fade-in-down">Welcome to CIZ.LLC</h1>
+        </div>
+    </section>
+
     <!-- Landing Page -->
-    <section id="consulting" class="container mx-auto px-4 py-20">
-        <div class="text-center mb-12">
-            <img src="https://via.placeholder.com/150" alt="Founder Image" class="mx-auto rounded-full border-4 border-blue-500 shadow-lg mb-8">
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">Welcome to CIZ.LLC</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">At CIZ.LLC, we provide unparalleled consulting services tailored to your business needs. Let our expertise guide you to success.</p>
-            <a href="tel:+1234567890" class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-all duration-300">Request For Quote</a>
+    <section id="consulting" class="container mx-auto px-4 py-24">
+        <div class="text-center mb-12 fade-in">
+            <h2 class="text-5xl font-bold text-gray-800 mb-4 text-shadow">Expert Consulting Services</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8 text-shadow">At CIZ.LLC, we provide unparalleled consulting services tailored to your business needs. Let our expertise guide you to success.</p>
+            <a href="tel:+1234567890" class="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 btn-hover-underline">Request For Quote</a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="p-8 bg-white rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                <h3 class="text-2xl font-semibold mb-4 text-blue-600">Consulting</h3>
+            <div class="p-10 bg-white rounded-lg shadow-2xl text-center transform hover:scale-105 transition-transform duration-500 card-hover">
+                <h3 class="text-3xl font-semibold mb-4 text-blue-600">Consulting</h3>
                 <p class="text-gray-600">Expert advice to help you navigate complex business challenges.</p>
             </div>
-            <div class="p-8 bg-white rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                <h3 class="text-2xl font-semibold mb-4 text-blue-600">Business Advice</h3>
+            <div class="p-10 bg-white rounded-lg shadow-2xl text-center transform hover:scale-105 transition-transform duration-500 card-hover">
+                <h3 class="text-3xl font-semibold mb-4 text-blue-600">Business Advice</h3>
                 <p class="text-gray-600">Strategic guidance to drive your business growth and success.</p>
             </div>
-            <div class="p-8 bg-white rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                <h3 class="text-2xl font-semibold mb-4 text-blue-600">Categorical Organization</h3>
+            <div class="p-10 bg-white rounded-lg shadow-2xl text-center transform hover:scale-105 transition-transform duration-500 card-hover">
+                <h3 class="text-3xl font-semibold mb-4 text-blue-600">Categorical Organization</h3>
                 <p class="text-gray-600">Structured solutions to optimize your business operations.</p>
             </div>
         </div>
     </section>
 
-    <hr class="my-12 border-t-2 border-gray-200">
+    <div class="section-divider"></div>
 
     <!-- Landscaping Page -->
-    <section id="landscaping" class="container mx-auto px-4 py-20">
-        <div class="text-center mb-12">
-            <img src="https://via.placeholder.com/150" alt="Landscaping Project Image" class="mx-auto rounded-lg border-4 border-green-500 shadow-lg">
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">Landscaping Services</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Transform your outdoor space with our expert landscaping services. We bring your vision to life with innovative and sustainable designs.</p>
+    <section id="landscaping" class="container mx-auto px-4 py-24 gradient-bg">
+        <div class="text-center mb-12 fade-in">
+            <h2 class="text-5xl font-bold text-gray-800 mb-4 text-shadow">Landscaping Services</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto text-shadow">Transform your outdoor space with our expert landscaping services. We bring your vision to life with innovative and sustainable designs.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="p-8 bg-white bg-opacity-70 rounded-lg shadow-lg text-center backdrop-blur-md transform hover:scale-105 transition-transform duration-300">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 fade-in-up">
+            <div class="p-10 bg-white bg-opacity-80 rounded-lg shadow-2xl text-center backdrop-blur-md transform hover:scale-105 transition-transform duration-500 card-hover">
                 <img src="https://via.placeholder.com/100" alt="Landscaping Service 1" class="mx-auto rounded-lg mb-4">
-                <h3 class="text-2xl font-semibold mb-2 text-green-600">Garden Design</h3>
+                <h3 class="text-3xl font-semibold mb-2 text-green-600">Garden Design</h3>
                 <p class="text-gray-600">Customized garden layouts to suit your style and space.</p>
             </div>
-            <div class="p-8 bg-white bg-opacity-70 rounded-lg shadow-lg text-center backdrop-blur-md transform hover:scale-105 transition-transform duration-300">
+            <div class="p-10 bg-white bg-opacity-80 rounded-lg shadow-2xl text-center backdrop-blur-md transform hover:scale-105 transition-transform duration-500 card-hover">
                 <img src="https://via.placeholder.com/100" alt="Landscaping Service 2" class="mx-auto rounded-lg mb-4">
-                <h3 class="text-2xl font-semibold mb-2 text-green-600">Water Features</h3>
+                <h3 class="text-3xl font-semibold mb-2 text-green-600">Water Features</h3>
                 <p class="text-gray-600">Create a serene environment with beautifully crafted water features.</p>
             </div>
-            <div class="p-8 bg-white bg-opacity-70 rounded-lg shadow-lg text-center backdrop-blur-md transform hover:scale-105 transition-transform duration-300">
+            <div class="p-10 bg-white bg-opacity-80 rounded-lg shadow-2xl text-center backdrop-blur-md transform hover:scale-105 transition-transform duration-500 card-hover">
                 <img src="https://via.placeholder.com/100" alt="Landscaping Service 3" class="mx-auto rounded-lg mb-4">
-                <h3 class="text-2xl font-semibold mb-2 text-green-600">Outdoor Lighting</h3>
+                <h3 class="text-3xl font-semibold mb-2 text-green-600">Outdoor Lighting</h3>
                 <p class="text-gray-600">Enhance your outdoor experience with expertly installed lighting.</p>
             </div>
         </div>
-        <div class="text-center mt-12">
-            <p class="text-lg text-gray-600 font-semibold">*Pricing is on a contract basis per job.</p>
-            <a href="tel:+1234567890" class="inline-block mt-6 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition-all duration-300">Request For Quote</a>
+        <div class="text-center mt-16">
+            <p class="text-xl text-gray-600 font-semibold">*Pricing is on a contract basis per job.</p>
+            <a href="tel:+1234567890" class="inline-block mt-6 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 btn-hover-underline">Request For Quote</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-10">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-left">
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-left fade-in-up">
             <div class="mb-6 md:mb-0">
-                <h3 class="text-xl font-bold mb-4">CIZ.LLC</h3>
-                <ul class="space-y-2">
+                <h3 class="text-2xl font-bold mb-6">CIZ.LLC</h3>
+                <ul class="space-y-3 text-lg">
                     <li><a href="#consulting" class="hover:underline">Consulting</a></li>
                     <li><a href="#landscaping" class="hover:underline">Landscaping</a></li>
                     <li><a href="#car-dealership" class="hover:underline">Car Dealership</a></li>
@@ -157,9 +266,9 @@
                 </ul>
             </div>
             <div class="mb-6 md:mb-0">
-                <p class="mb-4">&copy; 2024 CIZ.LLC - All rights reserved.</p>
-                <p>Designed by <a href="https://webstaxinc.vercel.app" target="_blank" class="hover:underline text-blue-400">Webstax Inc</a></p>
-                <ul class="space-y-2 mt-4">
+                <p class="mb-6 text-lg">&copy; 2024 CIZ.LLC - All rights reserved.</p>
+                <p class="text-lg">Designed by <a href="https://webstaxinc.vercel.app" target="_blank" class="hover:underline text-blue-400">Webstax Inc</a></p>
+                <ul class="space-y-3 mt-6 text-lg">
                     <li><a href="#" class="hover:underline">Terms and Conditions</a></li>
                     <li><a href="#" class="hover:underline">NDA</a></li>
                 </ul>
