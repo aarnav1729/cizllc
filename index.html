@@ -7,11 +7,11 @@
     <title>CIZ.LLC</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
     <style>
         body {
             font-family: 'IBM Plex Sans', sans-serif;
-            background: linear-gradient(-90deg, #FF6F61, #6B5B95, #88B04B, #F7CAC9);
+            background: linear-gradient(-90deg, #ff71bf, #b294ff, #6bb0ff, #adfbff);
             background-size: 800% 800%;
             animation: gradientBG 12s ease infinite;
         }
@@ -31,7 +31,7 @@
         }
 
         .gradient-bg {
-            background: linear-gradient(90deg, #FF6F61, #6B5B95, #88B04B, #F7CAC9);
+            background: linear-gradient(90deg, #FF71bf, #b294ff, #6bb0ff, #adfbff);
             background-size: 800% 800%;
             animation: gradientBGReverse 12s ease infinite;
         }
@@ -66,7 +66,7 @@
                 <a href="#personal-training" class="hover:text-gray-600">Personal Training</a>
                 <a href="#contact" class="hover:text-gray-600">Contact</a>
             </nav>
-            <button id="menu-btn" class="md:hidden text-3xl text-black">
+            <button id="menu-btn" class="md:hidden text-3xl">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -74,7 +74,7 @@
             <button id="close-btn" class="absolute top-5 right-5 text-3xl">
                 <i class="fas fa-times"></i>
             </button>
-            <nav class="flex flex-col space-y-6">
+            <nav class="flex flex-col p-12 space-y-6">
                 <a href="#consulting" class="hover:text-gray-300">Consulting</a>
                 <a href="#landscaping" class="hover:text-gray-300">Landscaping</a>
                 <a href="#car-dealership" class="hover:text-gray-300">Car Dealership</a>
@@ -92,6 +92,11 @@
             <h2 class="text-3xl font-bold mb-4">Welcome to CIZ.LLC</h2>
             <p class="text-lg mb-8">At CIZ.LLC, we provide unparalleled consulting services tailored to your business needs. Let our expertise guide you to success.</p>
         </div>
+
+        <div class="mt-6 md:mt-0 items-center text-center mb-6">
+            <a href="tel:+1234567890" class="px-4 py-2 bg-blue-500 hover:bg-blue-900 text-white rounded-lg items-center">Request For Quote</a>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="p-6 bg-white rounded-lg shadow-lg text-center">
                 <h3 class="text-2xl font-semibold mb-4">Consulting</h3>
@@ -107,6 +112,8 @@
             </div>
         </div>
     </section>
+
+    <hr>
 
     <!-- Landscaping Page -->
     <section id="landscaping" class="container mx-auto px-4 py-20">
@@ -134,12 +141,15 @@
         </div>
         <div class="text-center mt-12">
             <p class="text-lg font-semibold">*Pricing is on a contract basis per job.</p>
+            <div class="mt-6 md:mt-0">
+                <a href="tel:+1234567890" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-lg items-center">Request For Quote</a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-left">
             <div>
                 <h3 class="text-lg font-bold mb-2">CIZ.LLC</h3>
                 <ul>
@@ -153,25 +163,27 @@
             </div>
             <div class="mt-6 md:mt-0">
                 <p class="mb-2">&copy; 2024 CIZ.LLC - All rights reserved.</p>
+                <p class="mb-2">Designed by <a href="https://webstaxinc.vercel.app" target="_blank" class="hover:underline">Webstax Inc</a></p>
                 <ul>
                     <li><a href="#" class="hover:underline">Terms and Conditions</a></li>
                     <li><a href="#" class="hover:underline">NDA</a></li>
-                    <li><a href="#" class="hover:underline">Contract</a></li>
                 </ul>
-            </div>
-            <div class="mt-6 md:mt-0">
-                <a href="tel:+19529992054" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-lg">Request For Quote</a>
             </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('menu-btn').onclick = function () {
-            document.getElementById('menu').classList.remove('hidden');
-        };
-        document.getElementById('close-btn').onclick = function () {
-            document.getElementById('menu').classList.add('hidden');
-        };
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        const closeBtn = document.getElementById('close-btn');
+
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
     </script>
 </body>
 
